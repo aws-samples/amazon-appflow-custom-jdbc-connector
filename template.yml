@@ -6,8 +6,8 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: "org.custom.connector.jdbc.handler.JDBCConnectorLambdaHandler::handleRequest"
-      CodeUri: "./target/custom-connector-jdbc-1.0.jar"
-      Description: "Appflow Mock custom connector example"
+      CodeUri: "./target/appflow-custom-jdbc-connector-1.0.jar"
+      Description: "AppFlow custom JDBC connector example"
       Runtime: java11
       Timeout: 30
       MemorySize: 1024
@@ -17,6 +17,7 @@ Resources:
           Effect: Allow
           Action: 'secretsmanager:GetSecretValue'
           Resource: !Sub 'arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:appflow!${AWS::AccountId}-<your-connector-label>-*'
+
   PolicyPermission:
     Type: 'AWS::Lambda::Permission'
     Properties:
