@@ -5,12 +5,12 @@ package org.custom.connector.jdbc.client;
 
 import com.amazonaws.appflow.custom.connector.util.CredentialsProvider;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClient;
-import lombok.var;
-import org.apache.commons.collections4.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public final class SecretsManagerHelper {
@@ -24,7 +24,7 @@ public final class SecretsManagerHelper {
    * @return Map<String, String> Credentials
    */
   public static Map<String, String> getSecret(final String arn) {
-    Map<String, String> config = new HashedMap<>();
+    Map<String, String> config = new HashMap<>();
     try {
       String[] parts = arn.split(":");
       if (parts.length <= 1) {
@@ -36,7 +36,7 @@ public final class SecretsManagerHelper {
         // defaulting to us-east-1
         region = "us-east-1";
       }
-      var sc = AWSSecretsManagerClient.builder().withRegion(Regions.fromName(region)).build();
+      AWSSecretsManager sc = AWSSecretsManagerClient.builder().withRegion(Regions.fromName(region)).build();
       config = CredentialsProvider.getCustomAuthCredentials(sc, arn)
         .customCredentials();
     } catch (Exception ex) {

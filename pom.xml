@@ -1,28 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <parent>
-    <artifactId>aws-appflow-custom-connector</artifactId>
-    <groupId>com.amazonaws</groupId>
-    <version>1.0</version>
-  </parent>
-  <modelVersion>4.0.0</modelVersion>
 
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.amazonaws</groupId>
   <artifactId>appflow-custom-jdbc-connector</artifactId>
+  <version>1.0</version>
 
   <properties>
     <aws-custom-connector-sdk.version>1.0</aws-custom-connector-sdk.version>
     <aws-custom-connector-queryfilter.version>1.0</aws-custom-connector-queryfilter.version>
     <aws-custom-connector-integ-test.version>1.0</aws-custom-connector-integ-test.version>
     <mysql.connector.version>8.0.28</mysql.connector.version>
-    <testng.version>7.0.0</testng.version>
     <commons-collections4.version>4.1</commons-collections4.version>
     <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
     <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>
-    <logback.version>1.2.10</logback.version>
-    <lombok.version>1.18.20</lombok.version>
     <aws-sdk.version>2.16.65</aws-sdk.version>
     <apache.commons.version>1.9</apache.commons.version>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -68,44 +64,33 @@
       <artifactId>json</artifactId>
       <version>20180130</version>
     </dependency>
-
-    <!-- Logback -->
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-access</artifactId>
-      <version>${logback.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <version>${logback.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <version>${logback.version}</version>
-    </dependency>
-    <!-- Project Lombok -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-text</artifactId>
       <version>${apache.commons.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>3.9.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <!--Uncommenting the below plugin will run the Integration Tests for custom
-        connector. -->
-      <!--<plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.0.0-M5</version> <configuration> <workingDirectory>salesforce-example-test-files</workingDirectory>
-        <suiteXmlFiles> <suiteXmlFile>testng.xml</suiteXmlFile> </suiteXmlFiles>
-        </configuration> </plugin> -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -152,6 +137,15 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>

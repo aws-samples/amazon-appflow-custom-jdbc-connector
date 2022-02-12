@@ -15,7 +15,7 @@ import com.amazonaws.appflow.custom.connector.model.credentials.ValidateCredenti
 import com.amazonaws.appflow.custom.connector.model.settings.ImmutableValidateConnectorRuntimeSettingsResponse;
 import com.amazonaws.appflow.custom.connector.model.settings.ValidateConnectorRuntimeSettingsRequest;
 import com.amazonaws.appflow.custom.connector.model.settings.ValidateConnectorRuntimeSettingsResponse;
-import lombok.var;
+import org.custom.connector.jdbc.client.JDBCClient;
 import org.custom.connector.jdbc.client.JDBCClientFactory;
 import org.custom.connector.jdbc.config.JDBCConnectorConfiguration;
 import org.slf4j.Logger;
@@ -51,7 +51,7 @@ public class JDBCConnectorConfigurationHandler implements ConfigurationHandler {
    */
   @Override
   public ValidateCredentialsResponse validateCredentials(final ValidateCredentialsRequest request) {
-    var client = jdbcClient.create(request.credentials());
+    JDBCClient client = jdbcClient.create(request.credentials());
     try (Connection conn = client.getConnection()) {
       // do nothing, connection successful
     } catch (Exception ex) {

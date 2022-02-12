@@ -14,6 +14,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.custom.connector.jdbc.handler.JDBCConnectorLambdaHandler;
 import org.custom.connector.jdbc.utils.TestContext;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
@@ -22,7 +23,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class WriteDataRequestTest {
-  @org.junit.jupiter.api.Test
+  @Test
   void testWriteDataRequestTest() throws JsonProcessingException {
     // arrange
     final ObjectMapper objectMapper = new ObjectMapper();
