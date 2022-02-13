@@ -3,14 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.amazonaws</groupId>
+  <groupId>org.custom.connector.jdbc</groupId>
   <artifactId>appflow-custom-jdbc-connector</artifactId>
   <version>1.0</version>
 
   <properties>
     <aws-custom-connector-sdk.version>1.0</aws-custom-connector-sdk.version>
-    <aws-custom-connector-queryfilter.version>1.0</aws-custom-connector-queryfilter.version>
-    <aws-custom-connector-integ-test.version>1.0</aws-custom-connector-integ-test.version>
     <mysql.connector.version>8.0.28</mysql.connector.version>
     <commons-collections4.version>4.1</commons-collections4.version>
     <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
@@ -23,19 +21,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.amazonaws</groupId>
+      <groupId>software.amazon.appflow</groupId>
       <artifactId>aws-custom-connector-sdk</artifactId>
       <version>${aws-custom-connector-sdk.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-custom-connector-queryfilter</artifactId>
-      <version>${aws-custom-connector-queryfilter.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.amazonaws</groupId>
-      <artifactId>aws-custom-connector-integ-test</artifactId>
-      <version>${aws-custom-connector-integ-test.version}</version>
     </dependency>
     <dependency>
       <groupId>mysql</groupId>
@@ -49,15 +37,14 @@
     </dependency>
     <dependency>
       <groupId>software.amazon.awssdk</groupId>
-      <artifactId>bom</artifactId>
-      <version>${aws-sdk.version}</version>
-      <type>pom</type>
-      <scope>import</scope>
-    </dependency>
-    <dependency>
-      <groupId>software.amazon.awssdk</groupId>
       <artifactId>secretsmanager</artifactId>
       <version>${aws-sdk.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>software.amazon.awssdk</groupId>
+          <artifactId>netty-nio-client</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.json</groupId>
@@ -142,10 +129,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
-        <configuration>
-          <source>11</source>
-          <target>11</target>
-        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -1,2 +1,12 @@
 /.idea/
 /target/
+.classpath
+.factorypath
+.project
+.settings/
+events/
+out.yml
+target
+.aws-sam/
+samconfig.toml
+template.yml.bkp

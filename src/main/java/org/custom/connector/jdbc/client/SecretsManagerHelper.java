@@ -7,10 +7,10 @@ import com.amazonaws.appflow.custom.connector.util.CredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.secretsmanager.AWSSecretsManager;
 import com.amazonaws.services.secretsmanager.AWSSecretsManagerClient;
+import org.apache.commons.collections4.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public final class SecretsManagerHelper {
@@ -24,7 +24,7 @@ public final class SecretsManagerHelper {
    * @return Map<String, String> Credentials
    */
   public static Map<String, String> getSecret(final String arn) {
-    Map<String, String> config = new HashMap<>();
+    Map<String, String> config = new HashedMap<>();
     try {
       String[] parts = arn.split(":");
       if (parts.length <= 1) {
