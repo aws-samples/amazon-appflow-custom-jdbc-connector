@@ -80,9 +80,13 @@ sam logs -n ConnectorFunction --stack-name <stack-name-provided-during-sam-deplo
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
 ## Result
-With this custom JDBC connector you can ship records from MySQL to S3 and the results would look like:
+Integrating MySQL source to a MySQL destination would yield results like:
 
-![Results](images/results.png)
+![MySQL-MySQL](images/mysql-to-mysql.png)
+
+Also, with this custom JDBC connector you can ship records from MySQL to S3 and the results would look like:
+
+![MySQL-S3](images/mysql-to-s3.png)
 
 ## Cleanup
 
