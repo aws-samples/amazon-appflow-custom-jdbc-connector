@@ -17,7 +17,7 @@ public class JDBCClientFactory implements AbstractFactory<JDBCClient> {
     String driver = secrets.getOrDefault("driver", null);
 
     switch (driver) {
-      case "mysql":
+      case "tidb":
         return new MySQLClient(secrets);
       default:
         throw new NotImplementedException("JDBC Driver: " + driver + " is not yet implemented");
