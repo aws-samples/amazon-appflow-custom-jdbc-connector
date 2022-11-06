@@ -4,12 +4,12 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.custom.connector.jdbc</groupId>
-  <artifactId>appflow-custom-jdbc-connector</artifactId>
+  <artifactId>test-appflow-and-tidb</artifactId>
   <version>1.0</version>
 
   <properties>
-    <aws-custom-connector-sdk.version>1.0</aws-custom-connector-sdk.version>
-    <mysql.connector.version>8.0.28</mysql.connector.version>
+    <aws-custom-connector-sdk.version>1.0.7</aws-custom-connector-sdk.version>
+    <mysql.connector.version>8.0.30</mysql.connector.version>
     <commons-collections4.version>4.1</commons-collections4.version>
     <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
     <maven-shade-plugin.version>3.2.2</maven-shade-plugin.version>

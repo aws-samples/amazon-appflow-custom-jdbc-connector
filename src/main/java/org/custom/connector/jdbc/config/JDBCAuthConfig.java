@@ -64,6 +64,15 @@ public class JDBCAuthConfig implements CustomAuthConfig {
       .sensitiveField(true)
       .build();
 
-    return Arrays.asList(driver, hostname, port, username, password, database);
+    AuthParameter tls = ImmutableAuthParameter.builder()
+      .key("tls")
+      .label("TLS")
+      .description("If using TLS to connect")
+      .addConnectorSuppliedValues("Yes")
+      .addConnectorSuppliedValues("No")
+      .required(true)
+      .build();
+
+    return Arrays.asList(driver, hostname, port, username, password, database, tls);
   }
 }

@@ -6,8 +6,8 @@ Resources:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: "org.custom.connector.jdbc.handler.JDBCConnectorLambdaHandler::handleRequest"
-      CodeUri: "./target/appflow-custom-jdbc-connector-1.0.jar"
-      Description: "AppFlow custom JDBC connector example"
+      CodeUri: "./target/test-appflow-and-tidb-1.0.jar"
+      Description: "AppFlow custom TiDB connector example"
       Runtime: java11
       Timeout: 30
       MemorySize: 1024

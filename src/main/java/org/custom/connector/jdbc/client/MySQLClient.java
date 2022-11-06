@@ -133,6 +133,12 @@ public final class MySQLClient implements JDBCClient {
         credentials.get("password")
       );
 
+      if (credentials.get("tls").equalsIgnoreCase("Yes")) {
+        uri += "&sslMode=REQUIRED&enabledTLSProtocols=TLSv1.2,TLSv1.3";
+      }
+
+      LOGGER.error("URI: " + uri);
+
       conn = DriverManager.getConnection(uri);
     } catch (SQLException ex) {
       // handle any errors
